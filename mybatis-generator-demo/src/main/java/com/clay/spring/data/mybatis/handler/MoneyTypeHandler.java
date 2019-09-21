@@ -1,4 +1,4 @@
-package geektime.spring.data.mybatis.handler;
+package com.clay.spring.data.mybatis.handler;
 
 import org.apache.ibatis.type.BaseTypeHandler;
 import org.apache.ibatis.type.JdbcType;

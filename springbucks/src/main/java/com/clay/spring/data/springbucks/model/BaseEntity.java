@@ -10,6 +10,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @author clay
+ */
 @MappedSuperclass
 @Data
 @NoArgsConstructor

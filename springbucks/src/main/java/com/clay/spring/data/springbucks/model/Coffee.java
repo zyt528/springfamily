@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
 
+/**
+ * @author clay
+ */
 @Entity
 @Table(name = "T_COFFEE")
 @Builder

@@ -6,6 +6,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @author clay
+ */
 @Entity
 @Table(name = "T_ORDER")
 @Data

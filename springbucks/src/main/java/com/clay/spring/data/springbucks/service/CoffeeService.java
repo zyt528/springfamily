@@ -12,6 +12,9 @@ import java.util.Optional;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.exact;
 
+/**
+ * @author clay
+ */
 @Slf4j
 @Service
 public class CoffeeService {

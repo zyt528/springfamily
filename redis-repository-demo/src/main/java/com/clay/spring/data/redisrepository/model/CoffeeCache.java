@@ -18,7 +18,7 @@ import org.springframework.data.redis.core.index.Indexed;
 @AllArgsConstructor
 @Builder
 @RedisHash(value = "springbucks-coffee", timeToLive = 60)
-public class CoffeeCache extends BaseEntity {
+public class CoffeeCache {
 
     @Id
     private Long id;

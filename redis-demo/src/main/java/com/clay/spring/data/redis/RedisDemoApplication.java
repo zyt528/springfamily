@@ -28,7 +28,6 @@ import java.util.Optional;
 @Slf4j
 @EnableTransactionManagement
 @EnableJpaRepositories
-@EnableCaching(proxyTargetClass = true)
 public class RedisDemoApplication implements ApplicationRunner {
 
     @Autowired

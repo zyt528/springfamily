@@ -28,6 +28,7 @@ public class CoffeeService {
 
     @Cacheable
     public List<Coffee> findAllCoffee() {
+        findOneCoffee("latte");
         return coffeeRepository.findAll();
     }
 

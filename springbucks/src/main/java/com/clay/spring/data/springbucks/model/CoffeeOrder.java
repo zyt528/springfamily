@@ -12,6 +12,7 @@ import java.util.List;
 @Entity
 @Table(name = "T_ORDER")
 @Data
+@EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor

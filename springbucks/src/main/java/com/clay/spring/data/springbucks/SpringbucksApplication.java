@@ -18,6 +18,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import redis.clients.jedis.Jedis;
@@ -32,9 +33,10 @@ import java.util.Optional;
  */
 @SpringBootApplication
 @Slf4j
+@EnableAspectJAutoProxy
 @EnableJpaRepositories
 @EnableTransactionManagement
-@EnableCaching(proxyTargetClass = true)
+//@EnableCaching(proxyTargetClass = true)
 public class SpringbucksApplication implements ApplicationRunner {
 
     @Autowired
@@ -46,29 +48,31 @@ public class SpringbucksApplication implements ApplicationRunner {
     @Autowired
     private CoffeeOrderService orderService;
 
-    @Autowired
-    private JedisPool jedisPool;
-
-    @Autowired
-    private JedisPoolConfig jedisPoolConfig;
+//    @Autowired
+//    private JedisPool jedisPool;
+//
+//    @Autowired
+//    private JedisPoolConfig jedisPoolConfig;
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbucksApplication.class, args);
     }
 
-    @Bean
-    @ConfigurationProperties("redis")
-    public JedisPoolConfig jedisPoolConfig() {
-        return new JedisPoolConfig();
-    }
-
-    @Bean(destroyMethod = "close")
-    public JedisPool jedisPool(@Value("${redis.host}") String host) {
-        return new JedisPool();
-    }
+//    @Bean
+//    @ConfigurationProperties("redis")
+//    public JedisPoolConfig jedisPoolConfig() {
+//        return new JedisPoolConfig();
+//    }
+//
+//    @Bean(destroyMethod = "close")
+//    public JedisPool jedisPool(@Value("${redis.host}") String host) {
+//        return new JedisPool();
+//    }
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+
+        // TODO findAll 无法实现aop ？
 
         log.info("Count: {}", coffeeService.findAllCoffee().size());
 

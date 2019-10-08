@@ -7,27 +7,29 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.*;
 import org.hibernate.annotations.Type;
 import org.joda.money.Money;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author clay
  */
 
-@Entity
-@Table(name = "T_COFFEE")
+@Table("t_coffee")
 @Builder
 @Data
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class Coffee extends BaseEntity implements Serializable {
+public class Coffee implements Serializable {
+    @Id
+    private Long id;
     private String name;
-
     @JsonSerialize(using = MoneySerializer.class)
     @JsonDeserialize(using = MoneyDeserializer.class)
     private Money price;
+    private Date createTime;
+    private Date updateTime;
 }

@@ -12,6 +12,7 @@ import org.joda.money.Money;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,16 +34,16 @@ public class CoffeeController {
     @Autowired
     private CoffeeService coffeeService;
 
-//    @PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-//    @ResponseBody
-//    @ResponseStatus(HttpStatus.CREATED)
-//    public Coffee addCoffeeWithBindingResult(@Valid NewCoffeeRequest newCoffeeRequest, BindingResult bindingResult) {
-//        if (bindingResult.hasErrors()) {
-//            log.warn("errors: {}", bindingResult);
-//            return null;
-//        }
-//        return coffeeService.saveCoffee(newCoffeeRequest.getName(), newCoffeeRequest.getPrice());
-//    }
+    @PostMapping(path = "/add", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    public Coffee addCoffeeWithBindingResult(@Valid NewCoffeeRequest newCoffeeRequest, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            log.warn("errors: {}", bindingResult);
+            return null;
+        }
+        return coffeeService.saveCoffee(newCoffeeRequest.getName(), newCoffeeRequest.getPrice());
+    }
 
     @PostMapping(path = "/", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     @ResponseBody
